@@ -3,21 +3,22 @@
 1. Скопируйте папку payment в корневую дирректорию сайта;
 
 2. В файле /phpshop/inc/config.ini добавьте следующие строки:
-
+```
 [fondy]
 fondy_merchant_id = "1396424";
 fondy_secret_key = "test";
 fondy_currency = "RUB";
 fondy_lang = "ru";
 fondy_on_page = "0";
-
+```
 Обозначения:
-merchant_id - идентификатор магазина Fondy;
-secret_key - секретный ключ;
-test_mode - тестовый режим работы, денежные средства сниматься не будут (1 - включен, 0 - выключен);
-currency - валюта заказов, т.е. в какой валюте будут передаваться суммы в Fondy(указывать ОДНУ валюту);
-language - язык, на котором будет отображаться мерчант Fondy.
-fondy_on_page - Включить режим показа на странице, т.е режим без перенаправления.
+
+	* merchant_id - идентификатор магазина Fondy;
+	* secret_key - секретный ключ;
+	* test_mode - тестовый режим работы, денежные средства сниматься не будут (1 - включен, 0 - выключен);
+	* currency - валюта заказов, т.е. в какой валюте будут передаваться суммы в Fondy(указывать ОДНУ валюту);
+	* language - язык, на котором будет отображаться мерчант Fondy.
+	* fondy_on_page - Включить режим показа на странице, т.е режим без перенаправления.
 
 Подробнее https://portal.fondy.eu/ru/info/api/v1.0/2
 
@@ -30,5 +31,5 @@ fondy_on_page - Включить режим показа на странице, 
   ![Скриншот][2]
 ----
 
-[1]: https://raw.githubusercontent.com/cloudipsp/wordpress/master/phpshop/settings1.png
-[2]: https://raw.githubusercontent.com/cloudipsp/wordpress/master/phpshop/settings.png
+[1]: https://raw.githubusercontent.com/cloudipsp/phpshop/master/settings.png
+[2]: https://raw.githubusercontent.com/cloudipsp/phpshop/master/settings1.png
