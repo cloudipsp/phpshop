@@ -30,11 +30,6 @@ $fields['response_url'] = $success_url;
 
 $signature =  FondyForm::getSignature($fields, $secret_key);
 
-$url = ($_SERVER['HTTPS'] ? 'https:/' : 'http:/') . $_SERVER['HTTP_HOST'];
-$success_url = "$url/success/?inv_id=" . $inv_id . '&payment=fondy';
-
-$fields['server_callback_url'] = $success_url;
-$fields['response_url'] = $success_url;
 // вывод HTML страницы с кнопкой для оплаты
 if ($SysValue['fondy']['fondy_on_page'] == 0){
 	$disp = "
