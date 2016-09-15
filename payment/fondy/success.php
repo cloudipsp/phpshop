@@ -2,7 +2,6 @@
 require_once(dirname(__FILE__) . "/FondyLib.php");
 if (empty($GLOBALS['SysValue']))
     exit(header("Location: /"));
-
 global $SysValue,$link_db;
 	// Определение платежной системы по $_GET['payment']
 	if (!empty($_REQUEST['payment']))
@@ -18,7 +17,7 @@ global $SysValue,$link_db;
 			$settings['merchant_id'] = $SysValue['fondy']['fondy_merchant_id'];
 			$settings['secret_key'] = $SysValue['fondy']['fondy_secret_key'];
 			$valid = FondyForm::isPaymentValid($settings, $_POST);
-			if ($valid == true ){
+			if ($valid == true && $_POST['order_status'] == FondyForm::ORDER_APPROVED){
 				$order_metod = "fondy";	
 				$success_function = true; // Выключаем функцию обновления статуса заказа, операция уже выполнена в result.php
 				$my_crc = "NoN";
