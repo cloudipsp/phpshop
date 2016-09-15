@@ -7,6 +7,14 @@ global $SysValue,$link_db;
 	// Определение платежной системы по $_GET['payment']
 	if (!empty($_REQUEST['payment']))
 		if ($_REQUEST['payment'] == 'fondy') {
+			if (empty($_POST)){
+				$fap = json_decode(file_get_contents("php://input"));
+				$_POST=array();
+				foreach($fap as $key=>$val)
+				{
+					$_POST[$key] =  $val ;
+				}
+			}			
 			$settings['merchant_id'] = $SysValue['fondy']['fondy_merchant_id'];
 			$settings['secret_key'] = $SysValue['fondy']['fondy_secret_key'];
 			$valid = FondyForm::isPaymentValid($settings, $_POST);
