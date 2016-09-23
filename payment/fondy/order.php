@@ -55,10 +55,11 @@ if ($SysValue['fondy']['fondy_on_page'] == 0){
 	</script>
 		</form>
 	</div>";
-}else{
-$fields['amount'] = $GLOBALS['SysValue']['other']['total']; //сумма покупки
+}
+else{
+	$fields['amount'] = $GLOBALS['SysValue']['other']['total']; //сумма покупки
 	$signature =  FondyForm::getSignature($fields, $secret_key);
-	$disp.='<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	$disp = '<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="https://api.fondy.eu/static_common/v1/checkout/ipsp.js"></script>
 	<div id="checkout">
 	<div id="checkout_wrapper"></div>
@@ -117,16 +118,16 @@ $fields['amount'] = $GLOBALS['SysValue']['other']['total']; //сумма пок�
 		this.loadUrl(url);
 		});
 	};
-var button = $ipsp.get("button");
-button.setMerchantId('.$fields['merchant_id'].');
-button.setAmount('.$fields['amount'].', "'.$fields['currency'].'", true);
-button.setHost("api.fondy.eu");
-button.addParam("order_desc","'.$fields['order_desc'].'");
-button.addParam("order_id","'.$fields['order_id'].'");
-button.addParam("lang","'.$fields['lang'].'");
-button.addParam("server_callback_url","'.$fields['server_callback_url'].'");
-button.setResponseUrl("'.$fields['response_url'].'");
-checkoutInit(button.getUrl());
-</script>';
+	var button = $ipsp.get("button");
+	button.setMerchantId('.$fields['merchant_id'].');
+	button.setAmount('.$fields['amount'].', "'.$fields['currency'].'", true);
+	button.setHost("api.fondy.eu");
+	button.addParam("order_desc","'.$fields['order_desc'].'");
+	button.addParam("order_id","'.$fields['order_id'].'");
+	button.addParam("lang","'.$fields['lang'].'");
+	button.addParam("server_callback_url","'.$fields['server_callback_url'].'");
+	button.setResponseUrl("'.$fields['response_url'].'");
+	checkoutInit(button.getUrl());
+	</script>';
 }
 ?>
