@@ -19,7 +19,7 @@ $fields['order_id'] = $mrh_ouid[0] . $mrh_ouid[1] . FondyForm::ORDER_SEPARATOR .
 
 //описание покупки
 $fields['order_desc'] = "Order:". $mrh_ouid[0] . $mrh_ouid[1];
-$fields['amount'] = round($GLOBALS['SysValue']['other']['total']*100); //сумма покупки
+
 
 $inv_id = $mrh_ouid[0] . "" . $mrh_ouid[1];
 $url = ($_SERVER['HTTPS'] ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'];
@@ -28,10 +28,12 @@ $success_url = "$url/success/?inv_id=" . $inv_id . '&payment=fondy';
 $fields['server_callback_url'] = $success_url;
 $fields['response_url'] = $success_url;
 
-$signature =  FondyForm::getSignature($fields, $secret_key);
+
 
 // вывод HTML страницы с кнопкой для оплаты
 if ($SysValue['fondy']['fondy_on_page'] == 0){
+	$fields['amount'] = round($GLOBALS['SysValue']['other']['total']*100); //сумма покупки
+	$signature =  FondyForm::getSignature($fields, $secret_key);
 	$disp = "
 	<div align='center'>
 	<head>
@@ -54,6 +56,8 @@ if ($SysValue['fondy']['fondy_on_page'] == 0){
 		</form>
 	</div>";
 }else{
+$fields['amount'] = $GLOBALS['SysValue']['other']['total']; //сумма покупки
+	$signature =  FondyForm::getSignature($fields, $secret_key);
 	$disp.='<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="https://api.fondy.eu/static_common/v1/checkout/ipsp.js"></script>
 	<div id="checkout">
@@ -92,10 +96,6 @@ if ($SysValue['fondy']['fondy_on_page'] == 0){
 		},
 
 		".page-section-shopinfo" : {
-			"display": "none"
-		},
-
-		".page-section-overview" : {
 			"display": "none"
 		},
 	}
