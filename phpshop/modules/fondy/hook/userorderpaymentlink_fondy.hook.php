@@ -9,7 +9,7 @@ function userorderpaymentlink_mod_fondy_hook($obj, $PHPShopOrderFunction)
     $currencyISO = $PHPShopSystem->getDefaultValutaIso();
 
     // Контроль оплаты от статуса заказа
-    if ($PHPShopOrderFunction->order_metod_id == 10100)
+    if ($PHPShopOrderFunction->order_metod_id == 10034)
         if ($PHPShopOrderFunction->getParam('statusi') == $fondy->option['status_checkout'] or empty($fondy->option['status_checkout'])) {
 
             $order = $PHPShopOrderFunction->unserializeParam('orders');
@@ -36,7 +36,7 @@ function userorderpaymentlink_mod_fondy_hook($obj, $PHPShopOrderFunction)
             }
 
             $return = ParseTemplateReturn($GLOBALS['SysValue']['templates']['fondy']['fondy_payment_forma'], true);
-        } elseif ($PHPShopOrderFunction->getSerilizeParam('orders.Person.order_metod') == 10100)
+        } elseif ($PHPShopOrderFunction->getSerilizeParam('orders.Person.order_metod') == 10034)
             $return = 'Заказ обрабатывается менеджером';
     return $return;
 }
