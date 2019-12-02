@@ -4,7 +4,7 @@ function send_fondy_hook($obj, $value, $rout)
 {
     global $PHPShopSystem;
 
-    if ($rout === 'MIDDLE' and $value['order_metod'] == 10100) {
+    if ($rout === 'MIDDLE' and $value['order_metod'] == 10034) {
 
         $currencyISO = $PHPShopSystem->getDefaultValutaIso();
 

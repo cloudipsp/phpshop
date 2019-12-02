@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `phpshop_modules_fondy_log` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=cp1251;
 
 INSERT INTO `phpshop_payment_systems` (`id`, `name`, `path`, `enabled`, `num`, `message`, `message_header`, `yur_data_flag`, `icon`) VALUES
-(10100, 'Fondy (Fondy)', 'modules', '0', 0, '<p>Ваш заказ оплачен!</p>', 'Fondy', '', '/UserFiles/Image/Payments/visa.png');
+(10034, 'Fondy (Fondy)', 'modules', '0', 0, '<p>Ваш заказ оплачен!</p>', 'Fondy', '', '/UserFiles/Image/Payments/visa.png');
 
 INSERT INTO `phpshop_modules_fondy_system` VALUES (1, '', '', 'test', '', 'Fondy', 'Fondy', '1.0', '', '');
 
