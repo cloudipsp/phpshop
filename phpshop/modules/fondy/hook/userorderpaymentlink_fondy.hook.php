@@ -16,7 +16,7 @@ function userorderpaymentlink_mod_fondy_hook($obj, $PHPShopOrderFunction)
 
             $fondy->option['currency'] = $currencyISO;
             $fondy->option['order_id'] = 'order_' . $order['Person']['ouid'];
-            $fondy->option['order_desc'] = 'Order ' . $order['Person']['ouid'];
+            $fondy->option['order_desc'] = 'Номер заказа ' . $order['Person']['ouid'];
             $fondy->option['amount'] = ($PHPShopOrderFunction->getTotal() * 100);
 
             if (!$linkPayment = $fondy->isLinkPayment()) {
@@ -27,12 +27,12 @@ function userorderpaymentlink_mod_fondy_hook($obj, $PHPShopOrderFunction)
                     //$fondy->log("Link payment", $fondy->option['order_id'], $linkPayment, 'link');
                     $hash = md5($fondy->option['order_id'] . $fondy->option['amount'] . $fondy->option['merchant_id']);
                     $_SESSION[$hash] = $linkPayment;
-                    $obj->set('payment_forma', PHPShopText::a($linkPayment, 'Оплатить', 'Оплатить с помощью FONDY', false, false, false, "btn btn-primary"));
+                    $obj->set('payment_forma', PHPShopText::a($linkPayment, 'Оплатить', 'Оплатить с помощью FONDY', false, false, '_blank', "btn btn-primary"));
                 } else {
                     $obj->set('payment_forma', PHPShopText::message($linkData['response']['error_message']));
                 }
             } else {
-                $obj->set('payment_forma', PHPShopText::a($linkPayment, 'Оплатить', 'Оплатить с помощью FONDY', false, false, false, "btn btn-primary"));
+                $obj->set('payment_forma', PHPShopText::a($linkPayment, 'Оплатить', 'Оплатить с помощью FONDY', false, false, '_blank', "btn btn-primary"));
             }
 
             $return = ParseTemplateReturn($GLOBALS['SysValue']['templates']['fondy']['fondy_payment_forma'], true);

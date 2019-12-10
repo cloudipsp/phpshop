@@ -14,7 +14,7 @@ function send_fondy_hook($obj, $value, $rout)
         if (empty($fondy->option['status']) && $fondy->option['payment_type'] == 'redirect') {
             $fondy->option['currency'] = $currencyISO;
             $fondy->option['order_id'] = 'order_' . $value['ouid'];
-            $fondy->option['order_desc'] = 'Order ' . $value['ouid'];
+            $fondy->option['order_desc'] = 'Номер заказа ' . $value['ouid'];
             $fondy->option['amount'] = $obj->get('total');
 
 
